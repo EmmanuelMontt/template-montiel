@@ -1,0 +1,39 @@
+apply plugin: 'java-gradle-plugin' // Allows us to create and configure plugin
+apply plugin: 'kotlin' //We'll write our plugin in Kotlin
+
+buildscript {
+
+    ext {
+
+        kotlin_version = '1.6.10'
+
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.android.tools.build:gradle:7.1.3"
+    }
+
+}
+
+repositories {
+    mavenCentral()
+    google()
+}
+
+gradlePlugin {
+    plugins {
+        create("template-plugin") {
+            id = "template-plugin"
+            implementationClass = "TemplatePlugin"
+        }
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}

@@ -1,0 +1,1 @@
+C:\Users\emman\Documents\Projects\Android\template-montiel\template_plugin\build\classes\kotlin\main\Libs.class;C:\Users\emman\Documents\Projects\Android\template-montiel\template_plugin\build\classes\kotlin\main\TemplatePlugin.class;C:\Users\emman\Documents\Projects\Android\template-montiel\template_plugin\build\classes\kotlin\main\Versions.class

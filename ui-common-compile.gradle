@@ -1,0 +1,19 @@
+android {
+    dataBinding {
+        enabled = true
+    }
+
+    viewBinding {
+        enabled = true
+    }
+
+    buildFeatures {
+        dataBinding true
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.1.0"
+    }
+
+}
