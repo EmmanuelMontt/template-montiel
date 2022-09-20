@@ -22,6 +22,7 @@ class CategoryViewModel @Inject constructor(
 ) : ViewModel() {
 
     var categories by mutableStateOf<StateUI<List<CategoryUI>>>(StateUI.Init())
+    var categoryDetail by mutableStateOf<StateUI<CategoryUI>>(StateUI.Init())
 
     fun getAllCategories() {
         viewModelScope.launch {
@@ -29,6 +30,24 @@ class CategoryViewModel @Inject constructor(
                 categories = result.asStateUI(
                     mapper = categoryUIMapper
                 )
+            }
+        }
+    }
+
+    fun getCategoryDetail(categoryId: String) {
+        if (categories is StateUI.Success) {
+            (categories as StateUI.Success<List<CategoryUI>>).data?.also { list ->
+                categoryDetail = StateUI.Loading()
+
+                list.firstOrNull {
+                    it.id == categoryId
+                }.let { category ->
+                    if (category == null) {
+                        categoryDetail = StateUI.Error()
+                    } else {
+                        categoryDetail = StateUI.Success(category)
+                    }
+                }
             }
         }
     }

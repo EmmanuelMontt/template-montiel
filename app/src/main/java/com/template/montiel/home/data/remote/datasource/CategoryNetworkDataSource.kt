@@ -1,6 +1,6 @@
 package com.template.montiel.home.data.remote.datasource
 
-import com.template.montiel.home.data.remote.model.CategoryResponse
+import com.template.montiel.home.data.remote.model.CedearsCategoryResponse
 import com.template.montiel.home.data.remote.services.CategoryServices
 import com.template.montiel.network.data.remote.ext.asResponse
 import javax.inject.Inject
@@ -11,10 +11,10 @@ class CategoryNetworkDataSource @Inject constructor(
     private val services: CategoryServices
 ) : CategoryDataSource {
 
-    override suspend fun getAllCategories(): Flow<List<CategoryResponse>> =
+    override suspend fun getAllCategories(): Flow<CedearsCategoryResponse> =
         flow {
             emit(services.getAllCategories().asResponse {
-                it.categories
+                it
             })
         }
 

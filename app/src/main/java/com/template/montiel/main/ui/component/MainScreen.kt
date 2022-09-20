@@ -29,7 +29,7 @@ fun MainComponent(
             topBar = {
                 TopAppBar(
                     title = {
-                        Text(text = "Home")
+                        Text(text = "Template App")
                     },
                     backgroundColor = Turbo,
                     contentColor = Color.Black,
@@ -45,17 +45,21 @@ fun MainComponent(
 fun MainNavigation(
     navController: NavHostController
 ) {
+
+    // Fixme. Send all string routes ang parameters to RouteClass
     NavHost(
         navController = navController,
         startDestination = "categories_list",
     ) {
+
         composable(
             route = "categories_list"
         ) {
             CategoryListScreen { category ->
-                navController.navigate("category_detail/{${category.id}}")
+                navController.navigate("category_detail/${category.id}")
             }
         }
+
         composable(
             route = "category_detail/{categoryID}",
             arguments = listOf(navArgument("categoryID") { type = NavType.StringType })
@@ -72,6 +76,7 @@ fun MainNavigation(
                     categoryViewModel = categoryViewModel
                 )
             }
+
         }
     }
 }
