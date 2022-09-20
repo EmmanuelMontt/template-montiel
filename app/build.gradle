@@ -2,6 +2,9 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'template-plugin'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 apply from: "$rootDir/ui-common-compile.gradle"
@@ -39,6 +42,12 @@ dependencies {
     implementation Libs.kotlin
     implementation Libs.material
     implementation Libs.compose
+
+    implementation Libs.retrofit
+
+    implementation(Libs.hilt)
+    kapt(Libs.kaptHilt)
+    kapt(Libs.kaptHiltCompiler)
 
     testImplementation(Libs.testing)
     androidTestImplementation(Libs.testingImplementation)
